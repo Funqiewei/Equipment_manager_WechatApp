@@ -1,0 +1,201 @@
+<template>
+<div>
+  <!--
+  <div class="headerPic">
+    <img src="/static/images/useroot.png" >
+
+  </div>-->
+   <div class="wrapper">
+    <!-- 个人资料 -->
+    <div class="profile">
+      <div class="meta">
+        <!-- <image class="avatar" src="http://static.botue.com/ugo/uploads/monkey.png"></image> -->
+        <open-data class="avatar" type="userAvatarUrl"></open-data>
+        <!-- <text class="nickname">孙悟空</text> -->
+        <open-data class="nickname" type="userNickName"></open-data>
+      </div>
+    </div>
+    
+    <!-- 其它 -->
+    <div class="extra">
+      <button open-type="feedback" class="item icon-arrow">意见反馈</button>
+    </div>
+  </div>
+
+</div>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+     
+    }
+
+
+  },
+  methods:{
+      
+      },
+
+  };
+
+
+</script>
+
+<style lang="scss" >
+.headerPic{
+  z-index:-999;
+  position:absolute;
+  top:0px;
+  background-size:auto;
+}
+.header {
+  background-color:#fff ;
+  border-radius: 0px 0px 5px 5px;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 8px;
+  box-shadow: #d6d6d6 0px 0px 5px;
+  height: 100px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #f4f4f4;
+}
+
+.profile {
+  height: 375rpx;
+  background-color: #3d7ef9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .meta {
+    .avatar {
+      display: block;
+      width: 140rpx;
+      height: 140rpx;
+      border-radius: 50%;
+      border: 2rpx solid #fff;
+      overflow: hidden;
+    }
+
+    .nickname {
+      display: block;
+      text-align: center;
+      margin-top: 20rpx;
+      font-size: 30rpx;
+      color: #fff;
+    }
+  }
+}
+
+.count {
+  display: flex;
+  margin: 0 20rpx;
+  height: 100rpx;
+  text-align: center;
+  border-radius: 4rpx;
+  background-color: #fff;
+
+  position: relative;
+  top: -27rpx;
+
+  .cell {
+    flex: 1;
+    padding-top: 16rpx;
+    font-size: 27rpx;
+    color: #333;
+  }
+
+  text {
+    display: block;
+    font-size: 24rpx;
+  }
+}
+
+.orders {
+  margin: -17rpx 20rpx 0 20rpx;
+  padding: 20rpx 0;
+  background-color: #fff;
+  border-radius: 4rpx;
+
+  .title {
+    padding-left: 20rpx;
+    font-size: 30rpx;
+    color: #333;
+    padding-bottom: 20rpx;
+    border-bottom: 1rpx solid #eee;
+  }
+
+  .sorts {
+    padding-top: 30rpx;
+    text-align: center;
+    display: flex;
+  }
+
+  [class*="icon-"] {
+    flex: 1;
+    font-size: 24rpx;
+
+    &::before {
+      display: block;
+      font-size: 48rpx;
+      margin-bottom: 8rpx;
+      color: #3d7ef9;
+    }
+  }
+}
+
+.address {
+  line-height: 1;
+  background-color: #fff;
+  font-size: 30rpx;
+  padding: 25rpx 0 25rpx 20rpx;
+  margin: 10rpx 20rpx;
+  color: #333;
+  border-radius: 4rpx;
+}
+
+.extra {
+  margin: 0 20rpx;
+  background-color: #fff;
+  border-radius: 4rpx;
+
+  .item {
+    line-height: 1;
+    padding: 25rpx 0 25rpx 20rpx;
+    border-bottom: 1rpx solid #eee;
+    font-size: 30rpx;
+    color: #333;
+  }
+
+  button {
+    text-align: left;
+    background-color: #fff;
+
+    &::after {
+      border: none;
+      border-radius: 0;
+    }
+  }
+}
+
+.icon-arrow {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    right: 20rpx;
+    transform: translateY(-50%);
+  }
+}
+
+</style>
