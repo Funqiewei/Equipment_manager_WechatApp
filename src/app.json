@@ -1,9 +1,12 @@
 {
   "pages": [
+    
     "pages/index/main",
     "pages/instrument/main",
-    "pages/waited/main",
-    "pages/my/main"
+    "pages/list/main",
+    "pages/my/main",
+    "pages/guide/main",
+    "pages/time/main"
    ],
 
   "window": {
@@ -32,14 +35,14 @@
       "selectedIconPath": "static/tabs/home-active.png"
     }, 
     {
-      "text": "设备",
-      "pagePath": "pages/instrument/main",
+      "text": "选择",
+      "pagePath": "pages/time/main",
       "iconPath": "static/tabs/instrument.png",
       "selectedIconPath": "static/tabs/instrument-active.png"
     },
     {
       "text": "列表",
-      "pagePath": "pages/waited/main",
+      "pagePath": "pages/list/main",
       "iconPath": "static/tabs/waitedinstrument.png",
       "selectedIconPath": "static/tabs/waitedinstrument-active.png"
     },
@@ -63,7 +66,14 @@
     "van-tabs": "vant-weapp/dist/tabs/index",
     "van-collapse": "vant-weapp/dist/collapse/index",
     "van-collapse-item": "vant-weapp/dist/collapse-item/index",
-    "van-card": "vant-weapp/dist/card/index"
+    "van-card": "vant-weapp/dist/card/index",
+    "van-popup": "vant-weapp/dist/popup/index",
+    "van-picker": "vant-weapp/dist/picker/index",
+    "van-datetime-picker": "vant-weapp/dist/datetime-picker/index",
+    "van-cell": "vant-weapp/dist/cell/index",
+    "van-cell-group":"vant-weapp/dist/cell-group/index",
+    "van-calendar":"vant-weapp/dist/calendar/index",
+    "van-image": "vant-weapp/dist/image/index"
     
   }
 

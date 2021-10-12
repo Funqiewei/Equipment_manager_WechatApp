@@ -25,6 +25,7 @@
   "dependencies": {
     "@vant/weapp": "^1.6.8",
     "mpvue": "^2.0.0",
+    "mpvue-calendar": "^3.0.0",
     "mqtt": "^3.0.0",
     "node-sass": "^4.14.1",
     "vant-weapp": "^0.5.29"

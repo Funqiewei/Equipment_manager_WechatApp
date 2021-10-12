@@ -1,7 +1,7 @@
 {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#3d7ef9",
-    "navigationBarTitleText": "设备列表",
+    "navigationBarTitleText": "选择时间",
     "navigationBarTextStyle": "white",
     "backgroundColorTop":"#3d7ef9",
     "disableScroll":false

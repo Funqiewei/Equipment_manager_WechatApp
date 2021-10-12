@@ -42,8 +42,10 @@
           type="primary"
           slot="button"
           round block color="#3d7ef9"
-          border="true"@click="onClick">
-              {{isLogin?"登录":"注册"}}
+          border="true"
+          @click="onClick" 
+          >
+          {{isLogin?"登录":"注册"}}
           </van-button>
           
           <div class="other-option">
@@ -67,8 +69,7 @@
             @confirm="onFindPassWordConfirm"
             @cancel="onFindPassWordCancel"
             transistion="fade"
-
-               >
+            >
 
         <van-field 
             label="手机号"
@@ -174,7 +175,7 @@ export default {
               fail (res) {
                 console.log(res)
                 console.log("注册失败！")
-                Toast.success("注册失败")
+                Toast.fail("注册失败")
 
               }
             });
@@ -251,7 +252,6 @@ export default {
                 console.log(res);
                 console.log("重置成功！")
                 Toast.success("重置成功")
-               
                 },
 
               fail (res) {
