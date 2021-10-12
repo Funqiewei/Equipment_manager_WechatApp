@@ -1,3 +1,5 @@
+
+#BUG还是挺多的可以搜一搜科艺电子设备预约系统进去看看 目前还没对接完 
 # weproject
 
 > A Mpvue project
