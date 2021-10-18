@@ -1,9 +1,9 @@
 <template>
   <div>
       <van-tabs color="#3d7ef9"  :active="active" @change="onTabChange">
-      <van-tab title="预约列表">
+      <van-tab title="当前预约设备信息">
         <div v-show="!Appointment" class="title">
-          还未预约任何设备
+          个人信息展示
         </div>
         <div v-show="Appointment">
               <van-card 

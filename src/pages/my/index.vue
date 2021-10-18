@@ -11,12 +11,12 @@
       <div class="meta">
         <!-- <image class="avatar" src="http://static.botue.com/ugo/uploads/monkey.png"></image> -->
         <open-data class="avatar" type="userAvatarUrl"></open-data>
-        <!-- <text class="nickname">孙悟空</text> -->
+        <!-- <text class="nickname">nickname</text> -->
         <open-data class="nickname" type="userNickName"></open-data>
       </div>
     </div>
         
-        <van-field 
+        <!-- <van-field 
           label="学号"
           placeholder="请输入学号"
           :value="inputID"
@@ -30,7 +30,7 @@
           :value="inputName"
           @change="onNameChange"
           input-class="right"
-          />
+          /> -->
 
           <div class="margin">
            <van-cell title="小程序版本" value="1.0.0x" />
@@ -40,14 +40,9 @@
           </div>
         <!-- 其它 -->
           <div class="margin">
-        <van-cell title="隐私政策" value=" " />
+        <van-cell @click="clickhistory" title="当前设备" value=" " />
           </div>
-          <div class="margin">
-        <van-cell @click="clickhistory" title="使用历史" value=" " />
-          </div>
-          <div class="margin">
-        <van-cell title="意见反馈" value=" " />
-          </div>
+
           
     
       

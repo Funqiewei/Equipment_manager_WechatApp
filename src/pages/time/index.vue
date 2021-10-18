@@ -2,9 +2,11 @@
 <div>
   <van-toast id="van-toast"/>
         <div class="header">   
-     </div>
+       </div>
             <picker mode="multiSelector" @change="bindMultiPickerChange"  :value="multiIndex" :range="newMultiArray">
-              <div class="title"><span >&nbsp;&nbsp;点击选择时间：{{timestart}}</span></div>
+              <div class="title">
+                <span >&nbsp;&nbsp;点击选择时间：{{timestart}}</span>
+              </div>
             </picker>
         
         <van-cell title-class="celltitle" title="选择下方时段"  />
@@ -119,7 +121,9 @@ export default {
       return array;
     },
   },
+  
   methods: {
+     
     addDate(){
       var that =this
             const nowDate = new Date();
@@ -241,8 +245,13 @@ export default {
       font-weight: 150;
       display:flex;
       justify-content: space-between;
-      margin-top: 10px;
+      margin-top: 0px;
       margin-bottom: 10px;
+      border-style:solid;
+      color: #fff;
+      border-top-color:#fff;
+      background-color: #3d7ef9;
+      border-color: #3d7ef9;
     }
 .celltitle{
       left: 2px  !important;

@@ -122,7 +122,7 @@ import { connect } from "mqtt/dist/mqtt.js";
 const date=''
 const timeSegment=''
 import Toast from "vant-weapp/dist/toast/toast"
-Toast.setDefaultOptions({ duration: 1000 });
+// Toast.setDefaultOptions({ duration: 1000 });
 const mqttUrl = 'wxs://mqtt.emqttedu.xyz:8084/mqtt'
 export default {
   data () {
@@ -281,9 +281,17 @@ export default {
             
       },
   },
-onShow(){
+
+onShow(){     
+          var that=this
+          Toast.loading({
+          message: '加载中...',
+          forbidClick: true,
+            });
 
 },
+            
+
 onLoad: function (option) {
    var that =this
 　　console.log(option)//可以打印一下option看查看参数
@@ -385,7 +393,7 @@ onLoad: function (option) {
   margin: 0 auto;
   width: 50%;
   position:fixed;
-  bottom: 0px;
+  bottom: 50px;
   left:0px;
   right:0px;
 }
