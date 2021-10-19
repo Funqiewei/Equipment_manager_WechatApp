@@ -205,13 +205,19 @@ export default {
          
          },
       },
-
-        onLoad(){     
-            Toast.loading({
-            message: '加载中...',
+         onShow() {
+          var that = this;
+          Toast.loading({
+            message: "加载中...",
             forbidClick: true,
-              });
-          },
+          });
+        },
+        // onLoad(){     
+        //     Toast.loading({
+        //     message: '加载中...',
+        //     forbidClick: true,
+        //       });
+        //   },
 }    
 
 
