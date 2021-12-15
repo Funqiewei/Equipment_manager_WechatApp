@@ -28,7 +28,7 @@
     "mpvue-calendar": "^3.0.0",
     "mqtt": "^3.0.0",
     "node-sass": "^4.14.1",
-    "vant": "^2.12.29",
+    "vant": "^2.12.36",
     "vant-weapp": "^0.5.29"
   },
   "devDependencies": {

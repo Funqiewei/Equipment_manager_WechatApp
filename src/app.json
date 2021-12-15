@@ -1,62 +1,60 @@
-{
-  "pages": [
-    
+{"pages": [
+    "pages/authorize/main",
     "pages/index/main",
+    "pages/time/main",
     "pages/instrument/main",
+    "pages/user/main",
     "pages/list/main",
-    "pages/my/main",
     "pages/guide/main",
-    "pages/time/main"
-   ],
-
+    "pages/introduce/main"
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
-
-    "permission":{
-      "scope.userLocation":{
-          "desc":"你的位置信息将用于天气与位置接口的效果显示"}
-    },
-    
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于天气与位置接口的效果显示"
+    }
+  },
   "tabBar": {
     "color": "#999",
     "backgroundColor": "#fafafa",
     "selectedColor": "#3d7ef9",
     "borderStyle": "white",
-
     "list": [
       {
-      "text": "首页",
-      "pagePath": "pages/index/main",
-      "iconPath": "static/tabs/home.png",
-      "selectedIconPath": "static/tabs/home-active.png"
-    }, 
-    {
-      "text": "选择",
-      "pagePath": "pages/time/main",
-      "iconPath": "static/tabs/instrument.png",
-      "selectedIconPath": "static/tabs/instrument-active.png"
-    },
-    {
-      "text": "列表",
-      "pagePath": "pages/list/main",
-      "iconPath": "static/tabs/waitedinstrument.png",
-      "selectedIconPath": "static/tabs/waitedinstrument-active.png"
-    },
-    {
-      "text": "我的",
-      "pagePath": "pages/my/main",
-      "iconPath": "static/tabs/orders.png",
-      "selectedIconPath": "static/tabs/orders-active.png"
-    }
-  ],
+        "text": "首页",
+        "pagePath": "pages/index/main",
+        "iconPath": "static/tabs/home.png",
+        "selectedIconPath": "static/tabs/home-active.png"
+      },
+      {
+        "text": "选择",
+        "pagePath": "pages/time/main",
+        "iconPath": "static/tabs/instrument.png",
+        "selectedIconPath": "static/tabs/instrument-active.png"
+      },
+      {
+        "text": "列表",
+        "pagePath": "pages/list/main",
+        "iconPath": "static/tabs/waitedinstrument.png",
+        "selectedIconPath": "static/tabs/waitedinstrument-active.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/user/main",
+        "iconPath": "static/tabs/orders.png",
+        "selectedIconPath": "static/tabs/orders-active.png"
+      }
+    ],
     "position": "bottom"
   },
-
-  "usingComponents":{
+  "usingComponents": {
+    "van-radio-group": "vant-weapp/dist/radio-group/index",
+    "van-radio": "vant-weapp/dist/radio/index",
     "van-button": "vant-weapp/dist/button/index",
     "van-toast": "vant-weapp/dist/toast/index",
     "van-dialog": "vant-weapp/dist/dialog/index",
@@ -71,10 +69,7 @@
     "van-picker": "vant-weapp/dist/picker/index",
     "van-datetime-picker": "vant-weapp/dist/datetime-picker/index",
     "van-cell": "vant-weapp/dist/cell/index",
-    "van-cell-group":"vant-weapp/dist/cell-group/index",
-    "van-calendar":"vant-weapp/dist/calendar/index",
+    "van-cell-group": "vant-weapp/dist/cell-group/index",
     "van-image": "vant-weapp/dist/image/index"
-    
   }
-
 }
