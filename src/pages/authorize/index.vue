@@ -57,7 +57,7 @@
         >
       </van-radio-group>
       <div class="coppyright-wrapper">
-        <span class="copyright">©Power By Zuoge</span>
+        <span class="copyright">©Power By 甲乙丙程序小组</span>
       </div>
 
       <van-dialog
@@ -112,7 +112,7 @@ import Toast from "vant-weapp/dist/toast/toast";
 export default {
   data() {
     return {
-      inputUserName: "",
+      inputUserName: "",//登录学号
       inputPassword: "",
       inputContact: "",
       isLogin: true,
@@ -120,7 +120,7 @@ export default {
       showReSetPassword: false,
       radio: "0",
       avatar: "",
-      username: "",
+      username: "",//微信用户名
     };
   },
   onShow() {
@@ -223,7 +223,18 @@ export default {
                     success(res) {
                       //console.log(res);
                       if (res.data.code == 0) {
-                        //console.log("修改姓名成功！");
+                        wx.setStorage({
+                          key: "name",
+                          data: {
+                            username: that.username,
+                          },
+                          success(res) {
+                            console.log(res);
+                          },
+                          fail(res) {
+                            //console.log(res);
+                          },
+                        });
                       }
                     },
                   });
@@ -291,16 +302,7 @@ export default {
                 Toast.fail("无法连接服务器");
               },
             });
-            // if (1) {
-            //   Toast.success("登陆成功");
-            //   setTimeout(() => {
-            //     wx.switchTab({
-            //       url: "/pages/index/main",
-            //     });
-            //   }, 500);
-            // } else {
-            //   Toast.fail("用户名/密码错误");
-            // }
+           
           }
         }
       }, 1000);

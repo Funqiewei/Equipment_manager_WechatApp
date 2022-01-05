@@ -30,7 +30,7 @@
       </div>
 
       <div class="bottom-wrapper">
-        <div >
+        <div>
           <span style="float: left">{{ City }}-{{ Area }}</span>
           <span style="float: right"
             >空气质量:{{ AirValue }}-{{ AirQualiy }}</span
@@ -38,7 +38,6 @@
         </div>
         <div class="bottom-text">
           <span>{{ Weather }}:{{ Tempreal }}℃</span>
-       
         </div>
         <div class="weather-advice">
           &nbsp;&nbsp;&nbsp;&nbsp;{{ WeatherAdvice }}
@@ -55,8 +54,8 @@
           <span style="font-size: 16px">开始使用</span>
           <image class="btnImg" src="/static/images/use.png"></image>
         </van-button>
-      </div> 
-<!-- 
+      </div>
+      <!-- 
       <div class="button2">
         <van-button
           plain
@@ -104,7 +103,11 @@ export default {
       Weather: "阴",
       WeatherAdvice:
         "白天有小雨，从而使空气湿度加大，会使人们感觉有点儿闷热,但早晚的天气很凉爽、舒适。",
-      imgUrls: ["/static/images/swiper1.png", "/static/images/swiper2.jpg","/static/images/swiper3.jpg"],
+      imgUrls: [
+        "/static/images/swiper1.png",
+        "/static/images/swiper2.jpg",
+        "/static/images/swiper3.jpg",
+      ],
     };
   },
   components: {},
@@ -128,6 +131,30 @@ export default {
       message: "加载中...",
       forbidClick: true,
       duration: 500,
+    });
+    wx.getStorage({
+      key: "user",
+      success(res) {
+        wx.request({
+          url: `https://ztuser.ltd/equipment_server/userLogin`,
+          data: JSON.stringify({
+            account: res.data.Username,
+            password: res.data.Password,
+          }),
+          method: "post",
+          success(res) {
+            wx.setStorage({
+              key: "name",
+              data: {
+                username: res.data.name,
+              },
+              success(res) {},
+              fail(res) {},
+            });
+          },
+          fail(res) {},
+        });
+      },
     });
   },
   created() {
@@ -226,7 +253,6 @@ export default {
       font-weight: 150;
       text-align: left;
       margin-top: 25px;
-  
     }
     .weather-advice {
       margin-top: 10px;

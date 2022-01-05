@@ -40,7 +40,8 @@
     "minifyWXSS": true,
     "disableUseStrict": false,
     "showES6CompileOption": false,
-    "useCompilerPlugins": false
+    "useCompilerPlugins": false,
+    "minifyWXML": true
   },
   "miniprogramRoot": "dist/wx/",
   "compileType": "miniprogram",

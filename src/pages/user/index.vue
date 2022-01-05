@@ -11,7 +11,7 @@
           <!-- <image class="avatar" src="http://static.botue.com/ugo/uploads/monkey.png"></image> -->
           <open-data class="avatar" type="userAvatarUrl"></open-data>
           <!-- <text class="nickname">nickname</text> -->
-          <open-data class="nickname" type="userNickName"></open-data>
+          <span class="nickname">{{ showUsername }}</span>
         </div>
       </div>
 
@@ -56,8 +56,9 @@ export default {
       inputID: "",
       showModifyName: false,
       inputNewUserName: "",
-      UserOldName: "",
+      UserName: "",
       Password: "",
+      showUsername: "",
     };
   },
   methods: {
@@ -76,7 +77,7 @@ export default {
       wx.request({
         url: `https://ztuser.ltd/equipment_server/userChangeName`,
         data: JSON.stringify({
-          account: that.UserOldName,
+          account: that.UserName,
           password: that.Password,
           name: that.inputNewUserName,
         }),
@@ -85,6 +86,44 @@ export default {
           console.log(res);
           if (res.data.code == 0) {
             Toast.success("修改成功");
+            wx.setStorage({
+              key: "name",
+              data: {
+                username: that.inputNewUserName,
+              },
+              success(res) {
+                console.log(res);
+                wx.request({
+                  url: `https://ztuser.ltd/equipment_server/userLogin`,
+                  data: JSON.stringify({
+                    account: that.UserName,
+                    password: that.Password,
+                  }),
+                  method: "post",
+                  success(res) {
+                    that.showUsername = res.data.name;
+                  },
+                  fail(res) {
+                    //console.log(res);
+                  },
+                });
+              },
+              fail(res) {
+                //console.log(res);
+              },
+            });
+            wx.getStorage({
+              key: "name",
+              data: {
+                username: that.inputNewUserName,
+              },
+              success(res) {
+                console.log(res);
+              },
+              fail(res) {
+                //console.log(res);
+              },
+            });
           } else {
             Toast.fail("修改失败");
           }
@@ -117,10 +156,19 @@ export default {
     wx.getStorage({
       key: "user",
       success(res) {
-        that.UserOldName = res.data.Username;
+        that.UserName = res.data.Username;
         that.Password = res.data.Password;
       },
-    });
+    }),
+      wx.getStorage({
+        key: "name",
+        success(res) {
+          that.showUsername = res.data.username;
+        },
+        fail(res) {
+          //console.log(res);
+        },
+      });
   },
 };
 </script>

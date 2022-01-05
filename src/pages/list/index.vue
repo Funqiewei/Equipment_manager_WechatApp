@@ -1,32 +1,33 @@
 <template>
   <div>
     <van-tabs color="#3d7ef9" :active="active" @change="onTabChange">
-      <van-tab title="当前预约设备信息">
-        <div v-show="!Appointment" class="title">当前无预约设备</div>
-        <div v-show="Appointment" class="info-wrapper">
+      <van-tab title="当前预约设备信息"> 
+        <div class="info-wrapper">
           <div>
             <open-data class="avatar" type="userAvatarUrl"></open-data>
           </div>
           <div class="nickname">
-            <span> 用户名:</span> <open-data type="userNickName"></open-data
-            ><br />
+            <span> 用户名:</span>{{ Username }}<br />
             <span>学号:{{ userinfo.account }}</span
             ><br />
             <span> 预约开始时间: {{ start }} </span><br />
             <span> 预约结束时间: {{ end }} </span>
           </div>
         </div>
+        <div v-show="!Appointment" class="title">当前无预约设备</div>
+       
         <div v-show="Appointment" class="info-wrapper">
           <div class="machine">
-            <span>设备信息: <br /> </span>
-            <span>uuid：{{ Cancel.device }} <br /> </span>
-            <span> R:{{ state.R }}<br /></span>
-            <span> U:{{ state.U }}<br /> </span>
-            <span> I:{{ state.I }}<br /> </span>
-            <span> P:{{ state.P }}<br /> </span>
-            <span> E:{{ state.E }} <br /> </span>
+            <span style="left:20px"><image class="btnImg" src="/static/images/instrumentinfo.png"></image>设备信息: <br /> </span>
+            <image class="btnImg" src="/static/images/instrument.png"></image><span>设备编号：{{ Cancel.device }} <br /> </span>
+            <image class="btnImg" src="/static/images/open1.png" v-show="state.R!='开'"></image> 
+              <image class="btnImg" src="/static/images/open2.png" v-show="state.R=='开'"></image> 
+              <span>状态:{{ state.R }}<br /></span>
+            <image class="btnImg" src="/static/images/voltage.png"></image><span> 电压:{{ state.U }}V<br /> </span>
+            <image class="btnImg" src="/static/images/current.png"></image> <span>电流:{{ state.I }}A<br /> </span>
+            <image class="btnImg" src="/static/images/power.png"></image><span>功率:{{ state.P }}W<br /> </span>
+            <image class="btnImg" src="/static/images/energy.png"></image><span> 电量:{{ state.E }}kwh<br /> </span>
           </div>
-
           <van-button class="button" color="#3d7ef6" plain @click="cancelRes">
             取消预约
           </van-button>
@@ -64,8 +65,9 @@ export default {
       describe: "启动时间:",
       Appointment: false,
       flag: 0,
-      start: 1,
-      end: 1,
+      start: "无",
+      end: "无",
+      Username: "",
       state: {
         R: "loading",
         U: "loading",
@@ -82,6 +84,22 @@ export default {
     }, 5000);
   },
   methods: {
+    GMTToStr(time) {
+      let date = new Date(time);
+      let Str =
+        date.getFullYear() +
+        "-" +
+        (date.getMonth() + 1) +
+        "-" +
+        date.getDate() +
+        " " +
+        date.getHours() +
+        ":" +
+        date.getMinutes() +
+        ":" +
+        date.getSeconds();
+      return Str;
+    },
     //时间戳转时间格式
     current() {
       var that = this;
@@ -91,15 +109,14 @@ export default {
           data: JSON.stringify(that.UserControl),
           method: "post",
           success(res) {
+            console.log(res);
             if (res.data.code == 0) {
               var temp = res.data.state;
-              if (temp.split("_")[0] != 0) {
-                that.state.R = temp.split("_")[0];
-                that.state.U = temp.split("_")[1];
-                that.state.I = temp.split("_")[2];
-                that.state.P = temp.split("_")[3];
-                that.state.E = temp.split("_")[4];
-              }
+              that.state.R =(temp.split("_")[0] == 0)? "关":"开";
+              that.state.U = temp.split("_")[1];
+              that.state.I = temp.split("_")[2];
+              that.state.P = temp.split("_")[3];
+              that.state.E = temp.split("_")[4];
             }
           },
           fail(res) {
@@ -109,7 +126,14 @@ export default {
       }
     },
     getLocalTime(nS) {
-      return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/, " ");
+      var that = this;
+      var time = new Date(parseInt(nS))
+        .toLocaleString()
+        .replace(/:\d{1,2}$/, " ");
+      if (time.indexOf("GMT") != -1) {
+        return that.GMTToStr(time);
+      }
+      return time;
     },
     onTabChange(event) {
       // wx.showToast({
@@ -132,6 +156,8 @@ export default {
           if (res.data.code == 0) {
             Toast.success({ message: "取消预约成功", duration: "1000" });
             that.Appointment = false;
+            that.start="无";
+            that.end="无";
           } else {
             Toast.fail({ message: "取消预约失败", duration: "1000" });
           }
@@ -158,7 +184,15 @@ export default {
       forbidClick: true,
       duration: 500,
     });
-
+    wx.getStorage({
+      key: "name",
+      success(res) {
+         that.Username=res.data.username;
+      },
+      fail(res) {
+        //console.log(res);
+      },
+    });
     wx.getStorage({
       key: "user",
       success(res) {
@@ -193,14 +227,10 @@ export default {
                 method: "get",
                 success(res) {
                   that.UserControl.Control = res.data.hitokoto;
-                  //console.log(that.UserControl);
                 },
                 fail(res) {
-                  //console.log(res);
                 },
               });
-              // console.log(that.Cancel);
-              //console.log(res.data.reserved.set[0].devices[0]);
             }
           },
           fail(res) {
@@ -232,7 +262,7 @@ export default {
   // padding: 0 8px;
   overflow: hidden;
   background-color: #fff;
-  box-shadow: #d6d6d6 0px 0px 4px;
+  box-shadow: #d6d6d6 4px 4px 8px;
 }
 .button {
   margin: 0 auto;
@@ -260,9 +290,17 @@ export default {
     line-height: 1.7;
   }
 }
+.btnImg {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  left: 70px;
+  margin-top: 8px;
+}
 .machine {
   padding-top: 5px;
   margin-left: 15px;
+  font-size: 20px;
   > span {
     margin-left: 75px;
     line-height: 2;

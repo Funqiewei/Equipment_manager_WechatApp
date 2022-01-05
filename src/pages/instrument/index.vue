@@ -349,7 +349,7 @@ export default {
         },
       },
       Selectnum: "100",
-      id: "0",
+      id: "",
       userID: "",
       userName: "",
       isshow: false,

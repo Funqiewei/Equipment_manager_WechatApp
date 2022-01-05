@@ -5,7 +5,7 @@
        </div>
             <picker mode="multiSelector" @change="bindMultiPickerChange"  :value="multiIndex" :range="newMultiArray">
               <div class="title">
-                <span >&nbsp;&nbsp;点击选择时间：{{timestart}}</span>
+                <span >&nbsp;&nbsp;点此选择日期：{{timestart}}</span>
               </div>
             </picker>
         
@@ -76,7 +76,7 @@ export default {
       show: false,
       buttonclick: false,
       timeSegment: "",
-      timestart: "",
+      timestart: "未选择",
       TodayMonth: "",
       TodayDay: "",
       multiArray: [],
@@ -110,7 +110,11 @@ export default {
         months.push("" + i);
       }
       array.push(months);
-      for (let i = that.TodayDay; i <= maxday.getDate() && i <= that.TodayDay +6;i++) {
+      for (
+        let i = that.TodayDay;
+        i <= maxday.getDate() && i <= that.TodayDay + 6;
+        i++
+      ) {
         days.push("" + i);
       }
 
