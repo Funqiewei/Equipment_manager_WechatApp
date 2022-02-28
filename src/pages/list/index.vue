@@ -4,7 +4,8 @@
       <van-tab title="当前预约设备信息"> 
         <div class="info-wrapper">
           <div>
-            <open-data class="avatar" type="userAvatarUrl"></open-data>
+            <!-- <open-data class="avatar" type="userAvatarUrl"></open-data> -->
+            <img :src="userAvatarUrl" alt="" class="avatar">
           </div>
           <div class="nickname">
             <span> 用户名:</span>{{ Username }}<br />
@@ -63,6 +64,7 @@ export default {
       },
       active: "",
       describe: "启动时间:",
+      userAvatarUrl:"",
       Appointment: false,
       flag: 0,
       start: "无",
@@ -202,6 +204,9 @@ export default {
         that.Cancel.password = res.data.Password;
         that.userinfo.account = res.data.Username;
         that.userinfo.password = res.data.Password;
+        let a=res.data.avatarUrl.slice(0, -2)+"0";
+        that.userAvatarUrl=a;
+
         //console.log(that.userinfo);
         wx.request({
           url: `https://ztuser.ltd/equipment_server/userGetReserve`,

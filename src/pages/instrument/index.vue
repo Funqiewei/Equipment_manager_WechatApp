@@ -462,22 +462,8 @@ export default {
       endTime = startTime + 10800000;
     }
     if (time != 0) {
-      startTime = new Date(
-        2021,
-        option.month - 1,
-        option.day,
-        time,
-        0,
-        0
-      ).getTime();
-      endTime = new Date(
-        2021,
-        option.month - 1,
-        option.day,
-        time + 3,
-        0,
-        0
-      ).getTime();
+      startTime = new Date(new Date().getFullYear(),option.month - 1,option.day,time,0,0).getTime();
+      endTime = new Date(new Date().getFullYear(),option.month - 1,option.day,time + 3, 0,0).getTime();
     }
     this.resForm.reserves.start = startTime;
     this.resForm.reserves.end = endTime;

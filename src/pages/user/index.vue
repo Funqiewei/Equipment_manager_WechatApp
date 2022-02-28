@@ -2,14 +2,15 @@
   <div>
     <!--
   <div class="headerPic">
-
   </div>-->
     <div class="wrapper">
       <!-- 个人资料 -->
       <div class="profile">
         <div class="meta">
           <!-- <image class="avatar" src="http://static.botue.com/ugo/uploads/monkey.png"></image> -->
-          <open-data class="avatar" type="userAvatarUrl"></open-data>
+          <!-- 因2022微信收回开发者在未获取用户明示同意的情况下通过 <open-data>组件 在小程序中展示用户个人信息，用户容易误以为自己的个人信息在未授权的情况下，被小程序获取。下行弃用 -->
+          <!-- <open-data class="avatar" type="userAvatarUrl"></open-data> -->
+          <img :src="userAvatarUrl" alt="" class="avatar">
           <!-- <text class="nickname">nickname</text> -->
           <span class="nickname">{{ showUsername }}</span>
         </div>
@@ -53,6 +54,7 @@ import Toast from "vant-weapp/dist/toast/toast";
 export default {
   data() {
     return {
+      userAvatarUrl:"",
       inputID: "",
       showModifyName: false,
       inputNewUserName: "",
@@ -158,6 +160,8 @@ export default {
       success(res) {
         that.UserName = res.data.Username;
         that.Password = res.data.Password;
+        let a=res.data.avatarUrl.slice(0, -2)+"0";
+        that.userAvatarUrl=a;
       },
     }),
       wx.getStorage({
