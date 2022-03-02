@@ -8,7 +8,8 @@
 <img width="300px" src="https://github.com/Funqiewei/img-folder/blob/main/WechatIcon.jpg"/>
 # weproject
 
-> A Mpvue project
+> A Mpvue project 到时候可能改成uniapp
+> 
 
 ## Build Setup
 
